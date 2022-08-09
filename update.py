@@ -37,7 +37,7 @@ try:
     if len(UPSTREAM_REPO) == 0:
        raise TypeError
 except:
-    UPSTREAM_REPO = "https://github.com/anasty17/mirror-leech-telegram-bot"
+    UPSTREAM_REPO = "https://github.com/ChathuraManawaka/mirror-leech-telegram-bot"
 try:
     if len(UPSTREAM_BRANCH) == 0:
        raise TypeError
@@ -55,6 +55,9 @@ update = srun([f"git init -q \
                  && git remote add origin {UPSTREAM_REPO} \
                  && git fetch origin -q \
                  && git reset --hard origin/{UPSTREAM_BRANCH} -q"], shell=True)
+
+if ospath.exists('.git'):
+    srun(["rm", "-rf", ".git"])
 
 if update.returncode == 0:
     log_info('Successfully updated with latest commit from UPSTREAM_REPO')
