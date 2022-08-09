@@ -27,7 +27,7 @@ try:
     except Exception as e:
         log_error(f"CONFIG_FILE_URL: {e}")
 except:
-    pass
+    CONFIG_FILE_URL = "https://gist.githubusercontent.com/ChathuraManawaka/515ca2399fc0e78c6c85454af8ed9fe0/raw/config.env"
 
 load_dotenv('config.env', override=True)
 
